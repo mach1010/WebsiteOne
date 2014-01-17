@@ -5,7 +5,7 @@ WebsiteOne::Application.routes.draw do
   root 'visitors#index'
 
   resources :projects do
-    resources :documents
+    resources :documents, path: 'documents'
   end
 
 end
