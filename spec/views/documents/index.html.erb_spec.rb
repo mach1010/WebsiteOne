@@ -29,9 +29,9 @@ describe 'documents/index' do
       view.stub(:user_signed_in?).and_return(true)
     end
  
- 	it 'should not have edit button if not signed in' do
+ 	it 'should have edit button' do
 	  render
-	  rendered.should have_link 'New Document', :href => new_document_path
+	  rendered.should have_link 'Edit', :href => edit_document_path
 	end
 
     it 'should render a New Document button' do
@@ -45,14 +45,14 @@ describe 'documents/index' do
       view.stub(:user_signed_in?).and_return(false)
     end
 	
-	it 'should not have edit button if not signed in' do
+	it 'should not have an edit button' do
 	  render
 	  rendered.should_not have_link 'Edit', :href => edit_document_path(@documents[0].id)
 	end
 	
-	it 'should not have edit button if not signed in' do
+	it 'should not have a destroy button' do
 	  render
-	  rendered.should_not have_link 'Destroy', :href => document_path, method: 
+	  rendered.should_not have_link 'Destroy', :href => document_path, method: delete
 	end
 
   end
